@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";\nimport BranchComparison from "@/components/tree-branch-diagram";
+import { useEffect, useMemo, useState } from "react";
+import BranchComparison from "@/components/tree-branch-diagram";
 import {
   branchOptions,
   currentTree,
