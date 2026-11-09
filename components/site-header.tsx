@@ -6,12 +6,13 @@ const navigationItems = [
   { label: "Services", href: "/services" },
   { label: "Ressources", href: "/ressources" },
   { label: "L’agence", href: "/agence" },
+  { label: "Arborescence", href: "/outils/arborescence" },
 ];
 
 export default function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/80 bg-surface/90 backdrop-blur">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-4">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-5 px-5 py-4">
         <Link href="/" className="flex shrink-0 items-center gap-3">
           <span className="flex size-11 items-center justify-center rounded-xl bg-accent font-bold text-foreground">
             LBB
@@ -21,7 +22,7 @@ export default function SiteHeader() {
           </span>
         </Link>
 
-        <div className="hidden items-center gap-6 text-sm font-medium text-muted lg:flex">
+        <div className="hidden items-center gap-5 text-sm font-medium text-muted xl:flex">
           {navigationItems.map((item) => (
             <Link key={item.href} href={item.href} className="hover:text-primary">
               {item.label}
@@ -36,7 +37,7 @@ export default function SiteHeader() {
           Parlons de votre projet
         </Link>
 
-        <details className="relative lg:hidden">
+        <details className="relative xl:hidden">
           <summary className="cursor-pointer list-none rounded-xl border border-border bg-surface px-4 py-2.5 text-sm font-semibold text-foreground hover:border-primary">
             Menu
           </summary>
