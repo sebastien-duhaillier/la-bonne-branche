@@ -25,9 +25,9 @@ const tools = [
   {
     title: "Suivi des équipes",
     description:
-      "Suivre les responsables, les contenus contrôlés et les dernières dates de vérification.",
-    href: null,
-    status: "En préparation",
+      "Recenser les contacts et utilisateurs, puis suivre séparément la vérification des accès et des contenus.",
+    href: "/outils/suivi-equipes",
+    status: "Disponible",
   },
   {
     title: "Mutation des utilisateurs",
