@@ -1,4 +1,5 @@
 import Link from "next/link";
+import DemoNotice from "@/components/demo-notice";
 
 const solutions = [
   {
@@ -33,6 +34,7 @@ const statistics = [
 export default function HomePage() {
   return (
     <main>
+      <DemoNotice />
       <section className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:py-28">
         <div>
           <p className="inline-flex rounded-full bg-accent-soft px-4 py-2 text-sm font-semibold text-primary-hover">
@@ -58,10 +60,10 @@ export default function HomePage() {
             </Link>
 
             <Link
-              href="/agence"
+              href="/outils"
               className="inline-flex items-center justify-center rounded-xl border border-border bg-surface px-6 py-3.5 font-semibold text-foreground hover:border-primary hover:text-primary"
             >
-              Notre approche
+              Explorer les outils
             </Link>
           </div>
         </div>
