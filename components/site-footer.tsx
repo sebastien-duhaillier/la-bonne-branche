@@ -20,17 +20,30 @@ export default function SiteFooter() {
         <div>
           <p className="font-semibold text-foreground">Découvrir</p>
           <div className="mt-3 grid gap-2 text-sm text-muted">
-            <Link href="/solutions" className="hover:text-primary">Solutions</Link>
-            <Link href="/services" className="hover:text-primary">Services</Link>
-            <Link href="/ressources" className="hover:text-primary">Ressources</Link>
+            <Link href="/solutions" className="hover:text-primary">
+              Solutions
+            </Link>
+            <Link href="/services" className="hover:text-primary">
+              Services
+            </Link>
+            <Link href="/ressources" className="hover:text-primary">
+              Ressources
+            </Link>
+            <Link href="/outils/arborescence" className="hover:text-primary">
+              Outil d’arborescence
+            </Link>
           </div>
         </div>
 
         <div>
           <p className="font-semibold text-foreground">La société</p>
           <div className="mt-3 grid gap-2 text-sm text-muted">
-            <Link href="/agence" className="hover:text-primary">L’agence</Link>
-            <Link href="/contact" className="hover:text-primary">Contact</Link>
+            <Link href="/agence" className="hover:text-primary">
+              L’agence
+            </Link>
+            <Link href="/contact" className="hover:text-primary">
+              Contact
+            </Link>
           </div>
         </div>
       </div>
