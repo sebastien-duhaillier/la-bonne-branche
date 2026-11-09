@@ -540,7 +540,7 @@ export default function SiteTreeViewer() {
   }
 
   const shellClassName = fullScreen
-    ? "fixed inset-0 z-[100] overflow-y-auto bg-background p-4 sm:p-6"
+    ? "fixed inset-0 z-[100] space-y-6 overflow-y-auto bg-background p-4 sm:p-6"
     : "space-y-6";
 
   return (
