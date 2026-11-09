@@ -32,9 +32,9 @@ const tools = [
   {
     title: "Mutation des utilisateurs",
     description:
-      "Préparer le déplacement d’utilisateurs entre plusieurs équipes et vérifier leurs nouveaux accès.",
-    href: null,
-    status: "En préparation",
+      "Préparer la reprise des comptes, définir leurs périmètres et contrôler les futures autorisations.",
+    href: "/outils/mutation-utilisateurs",
+    status: "Disponible",
   },
 ];
 
