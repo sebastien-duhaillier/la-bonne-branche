@@ -44,10 +44,6 @@ const nodeHeight = 62;
 const horizontalGap = 90;
 const verticalGap = 28;
 
-function flattenTree(node: SiteTreeNode): SiteTreeNode[] {
-  return [node, ...(node.children?.flatMap(flattenTree) ?? [])];
-}
-
 function collectBranchIds(node: SiteTreeNode): string[] {
   return [
     ...(node.children?.length ? [node.id] : []),
@@ -347,12 +343,12 @@ function DiagramPanel({
     clientX: number,
     clientY: number,
     target: EventTarget | null,
-  ) {
+  ): boolean {
     if (
       target instanceof Element &&
       target.closest("[data-tree-node]")
     ) {
-      return;
+      return false;
     }
 
     dragRef.current = {
@@ -360,6 +356,8 @@ function DiagramPanel({
       startY: clientY,
       initialViewBox: viewBox,
     };
+
+    return true;
   }
 
   function moveDrag(clientX: number, clientY: number) {
@@ -550,14 +548,17 @@ function DiagramPanel({
           role="img"
           aria-label={title}
           onPointerDown={(event) => {
-            startDrag(
+            const dragStarted = startDrag(
               event.clientX,
               event.clientY,
               event.target,
             );
-            event.currentTarget.setPointerCapture(
-              event.pointerId,
-            );
+
+            if (dragStarted) {
+              event.currentTarget.setPointerCapture(
+                event.pointerId,
+              );
+            }
           }}
           onPointerMove={(event) =>
             moveDrag(event.clientX, event.clientY)
