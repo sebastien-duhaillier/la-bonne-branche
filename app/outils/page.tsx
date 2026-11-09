@@ -18,9 +18,9 @@ const tools = [
   {
     title: "Protection des URL",
     description:
-      "Enregistrer les pages à conserver, leur responsable et le motif de leur protection.",
-    href: null,
-    status: "En préparation",
+      "Enregistrer les pages à conserver, contrôler les protections héritées et suivre leur mise à jour.",
+    href: "/outils/protection-urls",
+    status: "Disponible",
   },
   {
     title: "Suivi des équipes",
