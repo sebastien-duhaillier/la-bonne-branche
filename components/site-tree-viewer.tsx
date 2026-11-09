@@ -272,7 +272,7 @@ export default function SiteTreeViewer() {
             </button>
             <button
               type="button"
-              onClick={() => setExpandedIds(new Set())}
+              onClick={() => setExpandedIds(new Set<string>())}
               className="rounded-xl border border-border px-4 py-3 text-sm font-semibold text-foreground hover:border-primary hover:text-primary"
             >
               Tout fermer
