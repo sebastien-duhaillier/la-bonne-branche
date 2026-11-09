@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";\nimport BranchComparison from "@/components/tree-branch-diagram";
 import {
   branchOptions,
   currentTree,
@@ -10,7 +10,7 @@ import {
   type SiteTreeNode,
 } from "@/data/site-tree";
 
-type ViewMode = "comparison" | "simulator";
+type ViewMode = "comparison" | "branches" | "simulator";
 type TreeVersion = "Actuelle" | "Préconisée";
 
 type FlatNode = {
@@ -561,6 +561,18 @@ export default function SiteTreeViewer() {
           </button>
           <button
             type="button"
+            onClick={() => setMode("branches")}
+            className={
+              "rounded-xl px-4 py-2.5 text-sm font-semibold " +
+              (mode === "branches"
+                ? "bg-primary text-white"
+                : "bg-surface-muted text-foreground hover:text-primary")
+            }
+          >
+            Vue graphique en branches
+          </button>
+          <button
+            type="button"
             onClick={() => setMode("simulator")}
             className={
               "rounded-xl px-4 py-2.5 text-sm font-semibold " +
@@ -782,6 +794,8 @@ export default function SiteTreeViewer() {
             </section>
           )}
         </>
+      ) : mode === "branches" ? (
+        <BranchComparison />
       ) : (
         <section className="space-y-6">
           <div className="rounded-2xl border border-border bg-surface p-6 shadow-sm">
