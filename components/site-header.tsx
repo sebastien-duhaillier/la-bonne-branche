@@ -6,7 +6,7 @@ const navigationItems = [
   { label: "Services", href: "/services" },
   { label: "Ressources", href: "/ressources" },
   { label: "L’agence", href: "/agence" },
-  { label: "Arborescence", href: "/outils/arborescence" },
+  { label: "Outils", href: "/outils" },
 ];
 
 export default function SiteHeader() {
