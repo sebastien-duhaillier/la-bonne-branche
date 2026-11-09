@@ -29,8 +29,8 @@ export default function SiteFooter() {
             <Link href="/ressources" className="hover:text-primary">
               Ressources
             </Link>
-            <Link href="/outils/arborescence" className="hover:text-primary">
-              Outil d’arborescence
+            <Link href="/outils" className="hover:text-primary">
+              Outils de démonstration
             </Link>
           </div>
         </div>
