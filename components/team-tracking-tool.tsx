@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import TeamOrgChart from "@/components/team-org-chart";
 import {
   checkStateLabels,
   teamGroups,
@@ -70,6 +71,7 @@ export default function TeamTrackingTool() {
   const [editing, setEditing] = useState<TeamRecord | null>(null);
   const [membersText, setMembersText] = useState("");
   const [message, setMessage] = useState("");
+  const [view, setView] = useState<"cards" | "chart">("cards");
 
   useEffect(() => {
     try {
@@ -237,6 +239,75 @@ export default function TeamTrackingTool() {
     setMessage("Les données fictives ont été restaurées.");
   }
 
+  function openTeamFromChart(id: string) {
+    setView("cards");
+    setQuery("");
+    setGroup("all");
+    setStatus("all");
+    setOpenIds((current) =>
+      current.includes(id) ? current : [...current, id],
+    );
+    window.setTimeout(() => {
+      document
+        .getElementById(`team-${id}`)
+        ?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 50);
+  }
+
+  const viewSwitcher = (
+    <div className="flex w-fit gap-2 rounded-2xl border border-border bg-surface p-2 shadow-sm">
+      <button
+        type="button"
+        onClick={() => setView("cards")}
+        className={
+          "rounded-xl px-4 py-2.5 text-sm font-semibold " +
+          (view === "cards"
+            ? "bg-primary text-white"
+            : "text-muted hover:bg-surface-muted hover:text-foreground")
+        }
+      >
+        Fiches de suivi
+      </button>
+      <button
+        type="button"
+        onClick={() => setView("chart")}
+        className={
+          "rounded-xl px-4 py-2.5 text-sm font-semibold " +
+          (view === "chart"
+            ? "bg-primary text-white"
+            : "text-muted hover:bg-surface-muted hover:text-foreground")
+        }
+      >
+        Organigramme
+      </button>
+    </div>
+  );
+
+  if (view === "chart") {
+    return (
+      <section className="space-y-6">
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          {[
+            ["Équipes recensées", totals.all],
+            ["Accès utilisateurs à jour", `${totals.users} / ${totals.all}`],
+            ["Contenus vérifiés", `${totals.contents} / ${totals.all}`],
+            ["Suivis terminés", `${totals.done} / ${totals.all}`],
+          ].map(([label, value]) => (
+            <article
+              key={label}
+              className="rounded-2xl border border-border bg-surface p-5 shadow-sm"
+            >
+              <p className="text-sm font-medium text-muted">{label}</p>
+              <p className="mt-2 text-3xl font-bold text-foreground">{value}</p>
+            </article>
+          ))}
+        </div>
+        {viewSwitcher}
+        <TeamOrgChart records={records} onOpenTeam={openTeamFromChart} />
+      </section>
+    );
+  }
+
   return (
     <section className="space-y-6">
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
@@ -255,6 +326,8 @@ export default function TeamTrackingTool() {
           </article>
         ))}
       </div>
+
+      {viewSwitcher}
 
       {message && (
         <p className="rounded-xl border border-primary/20 bg-accent-soft px-4 py-3 text-sm font-medium text-foreground">
@@ -470,8 +543,9 @@ export default function TeamTrackingTool() {
                   const isOpen = openIds.includes(record.id);
                   return (
                     <article
+                      id={`team-${record.id}`}
                       key={record.id}
-                      className="overflow-hidden rounded-2xl border border-border bg-surface shadow-sm"
+                      className="scroll-mt-28 overflow-hidden rounded-2xl border border-border bg-surface shadow-sm"
                     >
                       <button
                         type="button"
